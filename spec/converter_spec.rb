@@ -107,4 +107,12 @@ describe "Converter" do
       converter.to_decimal.must_equal "42"
     end
   end
+
+  describe "invalid numbers" do
+    it "should reject invalid numbers" do
+      lambda do
+        converter = NumberConverter::Converter.new("forty-two")
+      end.must_raise ArgumentError
+    end
+  end
 end

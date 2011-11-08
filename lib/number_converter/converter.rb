@@ -47,6 +47,8 @@ module NumberConverter
         @original_base = 10
       elsif number =~ /^[0-9a-fA-F]+$/
         @original_base = 16
+      elsif number =~ /[^0-9a-fA-F]/
+        raise ArgumentError, "You submitted an invalid number"
       end
     end
   end
