@@ -16,6 +16,8 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
+  s.add_dependency "sinatra", "1.3.1"
+
   s.add_development_dependency "minitest", "2.7.0"
   s.add_development_dependency "mynyml-redgreen", "0.7.1"
   s.add_development_dependency "guard", "0.8.8"

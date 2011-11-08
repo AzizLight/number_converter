@@ -1,0 +1,50 @@
+#!/usr/bin/env ruby
+
+require "optparse"
+require_relative "../lib/number_converter.rb"
+
+base = nil
+
+optparse = OptionParser.new do |opts|
+  opts.banner = "Usage: nc number"
+  opts.separator ""
+
+  opts.on("-v", "--version", "Shows the version of the Number Converter.") do
+    puts NumberConverter.version
+    exit
+  end
+
+  opts.on("-h", "--help", "Show some usage help.") do
+    puts opts
+    exit
+  end
+
+  opts.on("-b", "--binary", "Set the base of the passed number 2 (binary).") do
+    base = 2
+  end
+
+  opts.on("-d", "--decimal", "Set the base of the passed number to 10 (decimal).") do
+    base = 10
+  end
+
+  opts.on("-h", "--hex", "Set the base of the passed number to 16 (hexadecimal).") do
+    base = 16
+  end
+end
+
+optparse.parse!
+if ARGV.empty?
+  puts
+  puts optparse
+  puts
+  exit
+end
+
+converter = NumberConverter::Converter.new(ARGV.first)
+binary  = converter.to_binary
+decimal = converter.to_decimal
+hex     = converter.to_hex
+
+puts "Binary: #{binary}"
+puts "Decimal: #{decimal}"
+puts "Hexadecimal #{hex}"

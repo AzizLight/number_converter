@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    
+    <title></title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <section id="container">
+      <h1>Enter a number in binary, decimal or hexadecimal</h1>
+      <form method="post" action="/">
+        <input type="text" name="number" id="number" />
+
+        <section id="number-base" class="clearfix">
+
+          <p>You can select the base of you number if you want:</p>
+
+          <label for="base2">Binary</label>
+          <input type="radio" name="base" id="base2" value="2" />
+
+          <label for="base10">Decimal</label>
+          <input type="radio" name="base" id="base10" value="10" />
+
+          <label for="base16">Hexadecimal</label>
+          <input type="radio" name="base" id="base16" value="16" />
+        </section>
+
+        <input type="submit" name="submit" id="submit" value="Submit" />
+      </form>
+
+      <% if !@binary.nil? && !@binary.empty? %>
+        <p class="value"><strong>Binary:</strong> <%= @binary %></p>
+      <% end %>
+
+      <% if !@decimal.nil? && !@decimal.empty? %>
+        <p class="value"><strong>Decimal:</strong> <%= @decimal %></p>
+      <% end %>
+
+      <% if !@hex.nil? && !@hex.empty? %>
+        <p class="value"><strong>Hexadecimal:</strong> <%= @hex %></p>
+      <% end %>
+    </section>
+  </body>
+</html>

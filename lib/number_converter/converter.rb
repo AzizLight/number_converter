@@ -10,8 +10,9 @@ module NumberConverter
       end
 
       unless original_base.nil?
-        if @@supported_bases.include? original_base
-          @original_base = original_base
+        # FIXME: to_i called two times below!
+        if @@supported_bases.include? original_base.to_i
+          @original_base = original_base.to_i
         else
           raise RangeError, "#{original_base} is not a valid base."
         end

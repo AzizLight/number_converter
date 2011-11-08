@@ -1,0 +1,59 @@
+#container
+{
+  width: 900px;
+  margin: 0 auto;
+}
+
+form input[type="text"]
+{
+  width: 890px;
+}
+
+p.value
+{
+  font-size: 200%;
+  margin: 40px 0;
+}
+
+#number-base
+{
+  margin-bottom: 20px;
+}
+
+#number-base p
+{
+  margin-bottom: 10px;
+}
+
+#number-base label:first-child
+{
+  margin-left: 0;
+}
+
+#number-base label
+{
+  margin-left: 20px;
+  margin-top: -2px;
+}
+
+#number-base label, #number-base input[type="radio"]
+{
+  float: left;
+}
+
+.clearfix:before,
+.clearfix:after,
+.row:before,
+.row:after {
+	content: '\0020';
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+height: 0; }
+.row:after,
+.clearfix:after {
+clear: both; }
+.row,
+.clearfix {
+zoom: 1; }
