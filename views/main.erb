@@ -1,56 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    
-    <title></title>
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/style.css">
-  </head>
-  <body>
-    <section id="container">
-      <h1>Enter a number in binary, decimal or hexadecimal</h1>
+<form method="post" action="/">
+  <input type="text" name="number" id="number" autocomplete="off" />
 
-      <% if flash[:error] %>
-        <div id="error" class="flash"><%= flash[:error] %></div>
-      <% end %>
+  <section id="number-base" class="clearfix">
 
-      <form method="post" action="/">
-        <input type="text" name="number" id="number" />
+    <p>You can select the base of you number if you want:</p>
 
-        <section id="number-base" class="clearfix">
+    <label for="base2">Binary</label>
+    <input type="radio" name="base" id="base2" value="2" />
 
-          <p>You can select the base of you number if you want:</p>
+    <label for="base10">Decimal</label>
+    <input type="radio" name="base" id="base10" value="10" />
 
-          <label for="base2">Binary</label>
-          <input type="radio" name="base" id="base2" value="2" />
+    <label for="base16">Hexadecimal</label>
+    <input type="radio" name="base" id="base16" value="16" />
+  </section>
 
-          <label for="base10">Decimal</label>
-          <input type="radio" name="base" id="base10" value="10" />
+  <input type="submit" name="submit" id="submit" value="Submit" />
+</form>
 
-          <label for="base16">Hexadecimal</label>
-          <input type="radio" name="base" id="base16" value="16" />
-        </section>
+<% if !@binary.nil? && !@binary.empty? %>
+  <p class="value"><strong>Binary:</strong> <%= @binary %></p>
+<% end %>
 
-        <input type="submit" name="submit" id="submit" value="Submit" />
-      </form>
+<% if !@decimal.nil? && !@decimal.empty? %>
+  <p class="value"><strong>Decimal:</strong> <%= @decimal %></p>
+<% end %>
 
-      <% if !@binary.nil? && !@binary.empty? %>
-        <p class="value"><strong>Binary:</strong> <%= @binary %></p>
-      <% end %>
-
-      <% if !@decimal.nil? && !@decimal.empty? %>
-        <p class="value"><strong>Decimal:</strong> <%= @decimal %></p>
-      <% end %>
-
-      <% if !@hex.nil? && !@hex.empty? %>
-        <p class="value"><strong>Hexadecimal:</strong> <%= @hex %></p>
-      <% end %>
-    </section>
-
-    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.4.min.js">\x3C/script>')</script>
-    <script src="/js/application.js"></script>
-  </body>
-</html>
+<% if !@hex.nil? && !@hex.empty? %>
+  <p class="value"><strong>Hexadecimal:</strong> <%= @hex %></p>
+<% end %>
