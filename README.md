@@ -1,5 +1,5 @@
 Number Converter
-------------------------
+================
 
 Number Converter is, as its name very explicitly describes it, a number converter. It can convert binary, decimal or hexadecimal numbers to binary, decimal and hexadecimal.
 
