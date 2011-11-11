@@ -1,6 +1,11 @@
 require_relative "./spec_helper"
 
 describe "Converter" do
+  it "should provide to the user a list of supported bases" do
+    NumberConverter::Converter.must_respond_to :supported_bases
+    NumberConverter::Converter.supported_bases.must_be_instance_of Hash
+  end
+
   describe "original number" do
     it "should be required" do
       lambda do

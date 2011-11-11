@@ -4,6 +4,12 @@ module NumberConverter
 
     @@supported_bases = [2,10,16]
 
+    class << self
+      def supported_bases
+        return @@supported_bases
+      end
+    end
+
     def initialize(number, original_base = nil)
       unless number.class == String
         raise TypeError, "The first argument should be of class String."
