@@ -1,0 +1,13 @@
+<section id="output">
+  <% if !@binary.nil? && !@binary.empty? %>
+    <p class="value"><strong>Binary:</strong> <%= @binary %></p>
+  <% end %>
+
+  <% if !@decimal.nil? && !@decimal.empty? %>
+    <p class="value"><strong>Decimal:</strong> <%= @decimal %></p>
+  <% end %>
+
+  <% if !@hex.nil? && !@hex.empty? %>
+    <p class="value"><strong>Hexadecimal:</strong> <%= @hex %></p>
+  <% end %>
+</section>
