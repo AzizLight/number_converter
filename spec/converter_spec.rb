@@ -39,6 +39,10 @@ describe "Converter" do
       lambda do
         NumberConverter::Converter.new("AF42", 2)
       end.must_raise ArgumentError
+
+      lambda do
+        NumberConverter::Converter.new("AF42", 16)
+      end.must_be_silent
     end
 
     it "should give the option to specify the original base" do

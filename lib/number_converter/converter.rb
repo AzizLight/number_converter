@@ -67,19 +67,19 @@ module NumberConverter
 
     def verify_base(number, submitted_base)
       # FIXME: Refactor that fucking method!
-      if submitted_base == 2
+      if submitted_base == "2"
         if number =~ /^[01]+$/
           return true
         else
           return false
         end
-      elsif submitted_base == 10
+      elsif submitted_base == "10"
         if number =~ /^[0-9]+$/
           return true
         else
           return false
         end
-      elsif submitted_base == 16
+      elsif submitted_base == "16"
         if number =~ /^[0-9a-fA-F]+$/
           return true
         else
