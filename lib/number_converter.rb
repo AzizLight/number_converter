@@ -187,7 +187,7 @@ module NumberConverter
           "#{base.capitalize}: #{@number}"
         elsif format == "html"
           content_type :html
-          "<p><strong>#{base.capitalize}</strong> #{@number}\n"
+          "<p><strong>#{base.capitalize}</strong> #{@number}</p>\n"
         elsif format == "json"
           content_type :json
           number_hash.to_json
@@ -224,7 +224,7 @@ module NumberConverter
         "#{base.capitalize}: #{@number}"
       elsif format == "html"
         content_type :html
-        "<p><strong>#{base.capitalize}</strong> #{@number}\n"
+        "<p><strong>#{base.capitalize}</strong> #{@number}</p>\n"
       elsif format == "json"
         content_type :json
         number_hash.to_json
