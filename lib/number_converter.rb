@@ -36,6 +36,16 @@ module NumberConverter
       end
     end
 
+    not_found do
+      flash[:error] = "Invalid request."
+      redirect "/"
+    end
+
+    error do
+      flash[:error] = "Something went wrong"
+      redirect "/"
+    end
+
     get "/" do
       erb :main
     end
@@ -245,13 +255,6 @@ module NumberConverter
         flash[:error] = "Invalid output format."
         redirect "/"
       end
-    end
-
-    #
-    # Invalid requests.
-    get /^[^0-9a-f]+$/i do
-      flash[:error] = "Invalid request."
-      redirect "/"
     end
   end
 end
