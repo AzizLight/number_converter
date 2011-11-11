@@ -4,6 +4,11 @@
   margin: 0 auto;
 }
 
+h1
+{
+  margin-top: 30px;
+}
+
 form input[type="text"]
 {
   width: 890px;
