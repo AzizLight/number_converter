@@ -24,7 +24,13 @@ module NumberConverter
         end
       end
 
-      detect_base(number) if original_base.nil?
+      if original_base.nil?
+        detect_base(number)
+      else
+        unless verify_base(number, original_base)
+          raise ArgumentError, "Invalid number/base combination."
+        end
+      end
 
       @original_number = number
     end
@@ -54,8 +60,31 @@ module NumberConverter
         @original_base = 10
       elsif number =~ /^[0-9a-fA-F]+$/
         @original_base = 16
-      elsif number =~ /[^0-9a-fA-F]/
+      elsif number =~ /[^0-9a-fA-F]$/
         raise ArgumentError, "You submitted an invalid number"
+      end
+    end
+
+    def verify_base(number, submitted_base)
+      # FIXME: Refactor that fucking method!
+      if submitted_base == 2
+        if number =~ /^[01]+$/
+          return true
+        else
+          return false
+        end
+      elsif submitted_base == 10
+        if number =~ /^[0-9]+$/
+          return true
+        else
+          return false
+        end
+      elsif submitted_base == 16
+        if number =~ /^[0-9a-fA-F]+$/
+          return true
+        else
+          return false
+        end
       end
     end
   end

@@ -3,7 +3,7 @@ require_relative "./spec_helper"
 describe "Converter" do
   it "should provide to the user a list of supported bases" do
     NumberConverter::Converter.must_respond_to :supported_bases
-    NumberConverter::Converter.supported_bases.must_be_instance_of Hash
+    NumberConverter::Converter.supported_bases.must_be_instance_of Array
   end
 
   describe "original number" do
@@ -35,6 +35,12 @@ describe "Converter" do
   end
 
   describe "original base" do
+    it "should be verified against the number passed" do
+      lambda do
+        NumberConverter::Converter.new("AF42", 2)
+      end.must_raise ArgumentError
+    end
+
     it "should give the option to specify the original base" do
       lambda do
         NumberConverter::Converter.new("101010", 2)

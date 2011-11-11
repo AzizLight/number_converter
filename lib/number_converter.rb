@@ -109,7 +109,12 @@ module NumberConverter
     # format: output format (txt, json, yaml, etc.)
     get /^\/(\d+)\/([\da-f]+)(?:\.([a-z]{3,4}))?$/i do |base, number, format|
       if NumberConverter::Converter.supported_bases.include? base.to_i
-        converter = NumberConverter::Converter.new(number, base)
+        begin
+          converter = NumberConverter::Converter.new(number, base)
+        rescue ArgumentError
+          flash[:error] = "Invalid #{base_in_english(base)} number."
+          redirect "/"
+        end
 
         @binary  = converter.to_binary
         @decimal = converter.to_decimal
@@ -174,7 +179,12 @@ module NumberConverter
       end
 
       if NumberConverter::Converter.supported_bases.include? ibase.to_i
-        converter = NumberConverter::Converter.new(number, ibase)
+        begin
+          converter = NumberConverter::Converter.new(number, base)
+        rescue ArgumentError
+          flash[:error] = "Invalid #{base_in_english(base)} number."
+          redirect "/"
+        end
 
         base = base_in_english(obase)
         @number = converter.send "to_#{base}".to_sym
