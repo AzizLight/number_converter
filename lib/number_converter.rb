@@ -236,5 +236,12 @@ module NumberConverter
         redirect "/"
       end
     end
+
+    #
+    # Invalid requests.
+    get /^[^0-9a-f]+$/i do
+      flash[:error] = "Invalid request."
+      redirect "/"
+    end
   end
 end
