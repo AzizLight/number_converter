@@ -38,13 +38,17 @@ module NumberConverter
     end
 
     not_found do
-      flash[:error] = "Invalid request."
-      redirect "/"
+      unless request.xhr?
+        flash[:error] = "Invalid request."
+        redirect "/"
+      end
     end
 
     error do
-      flash[:error] = "Something went wrong"
-      redirect "/"
+      unless request.xhr?
+        flash[:error] = "Something went wrong"
+        redirect "/"
+      end
     end
 
     get "/" do
