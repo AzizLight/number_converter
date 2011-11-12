@@ -1,5 +1,9 @@
 <h1>Enter a number in binary, decimal or hexadecimal</h1>
 
+<% if flash[:error] %>
+  <div id="error" class="flash"><%= flash[:error] %></div>
+<% end %>
+
 <form method="post" action="/">
   <input type="text" name="number" id="number" autocomplete="off" />
 
