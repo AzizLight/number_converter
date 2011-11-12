@@ -122,8 +122,10 @@ module NumberConverter
         begin
           converter = NumberConverter::Converter.new(number, base)
         rescue ArgumentError
-          flash[:error] = "Invalid #{base_in_english(base)} number."
-          redirect "/"
+          unless request.xhr?
+            flash[:error] = "Invalid #{base_in_english(base)} number."
+            redirect "/"
+          end
         end
 
         @binary  = converter.to_binary

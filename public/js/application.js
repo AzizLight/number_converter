@@ -1,10 +1,4 @@
 $(document).ready(function() {
-  // First thing to do is to remove the submit button
-  // FIXME: The submit button still appears at the beginning at each page and the disapears because the js is not executed fast enough...
-  $("form input[type=submit]").fadeOut(100, function() {
-    $(this).remove();
-  });
-
   // Give the focus to the input text field
   $("form input:first").focus();
 
@@ -68,9 +62,20 @@ $(document).ready(function() {
         // is not at the end of the text field
         (event.which == 46 && isAtEnd == false))
     {
+      var base = $("form :radio").filter(":checked").val();
+
+      if (base == undefined)
+      {
+        var url_string = "/" + $(this).val();
+      }
+      else
+      {
+        var url_string = "/" + base + "/" + $(this).val();
+      }
+
       $.ajax({
         type : "GET",
-        url  : "/" + $(this).val(),
+        url  : url_string,
         dataType : "html",
         success : function(data) {
           var output = $("section#output");
@@ -81,6 +86,15 @@ $(document).ready(function() {
 
           $("form").after(data);
         },
+        error : function(XMLHttpRequest, textStatus, errorThrown) {
+          var error = $("p#error.flash");
+          if (error.length > 0)
+          {
+            error.remove();
+          }
+          $("section#container h1").after("<p id=\"error\" class=\"flash\">Invalid request.</p>");
+
+        }
 
       });
     }
