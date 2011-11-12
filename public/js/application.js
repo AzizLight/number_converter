@@ -101,6 +101,14 @@ $(document).ready(function() {
   });
 
   $("form :radio").click(function(){
+    var error = $("p#error.flash");
+    if (error.length > 0)
+    {
+      error.fadeOut("slow", function(){
+        $(this).remove();
+      });
+    }
+
     var number = $("form #number").val();
     if (number != "")
     {
