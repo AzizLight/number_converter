@@ -99,4 +99,36 @@ $(document).ready(function() {
       });
     }
   });
+
+  $("form :radio").click(function(){
+    var number = $("form #number").val();
+    if (number != "")
+    {
+
+      $.ajax({
+        type : "GET",
+        url  : "/" + $(this).val() + "/" + number,
+        dataType : "html",
+        success : function(data) {
+          var output = $("section#output");
+          if (output.length > 0)
+          {
+            output.remove();
+          }
+
+            $("form").after(data);
+        },
+        error : function(XMLHttpRequest, textStatus, errorThrown) {
+          var error = $("p#error.flash");
+          if (error.length > 0)
+          {
+            error.remove();
+          }
+          $("section#container h1").after("<p id=\"error\" class=\"flash\">Invalid request.</p>");
+
+        }
+
+      });
+    }
+  });
 });
