@@ -49,6 +49,31 @@ p.value
 #error.flash{padding:0.8em;margin-bottom:1em;border:2px solid #ddd;}
 #error.flash{background:#fbe3e4;color:#8a1f11;border-color:#fbc2c4;}
 
+ul
+{
+  list-style: inside disc;
+}
+footer
+{
+  width: 80px;
+  margin: 50px auto;
+  font-size: 80%;
+}
+footer ul
+{
+  list-style: none;
+}
+footer ul li
+{
+  display: inline;
+}
+footer ul li a
+{
+  display: block;
+  float: left;
+  margin-right: 10px;
+}
+
 .clearfix:before,
 .clearfix:after,
 .row:before,

@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "sinatra", "1.3.1"
   s.add_dependency "rack-flash", "0.1.2"
+  s.add_dependency "rdiscount", "1.6.8"
 
   s.add_development_dependency "minitest", "2.7.0"
   s.add_development_dependency "mynyml-redgreen", "0.7.1"

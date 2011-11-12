@@ -15,13 +15,18 @@
   </head>
   <body>
     <section id="container">
-      <h1>Enter a number in binary, decimal or hexadecimal</h1>
-
       <% if flash[:error] %>
         <div id="error" class="flash"><%= flash[:error] %></div>
       <% end %>
 
       <%= yield %>
+
+      <footer>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/api">API</a></li>
+        </ul>
+      </footer>
     </section>
 
   </body>

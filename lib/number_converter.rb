@@ -3,6 +3,7 @@ require "erb"
 require "rack-flash"
 require "yaml"
 require "json"
+require "rdiscount"
 
 require_relative "./number_converter/version"
 require_relative "./number_converter/converter"
@@ -55,6 +56,18 @@ module NumberConverter
         redirect "/#{params[:number]}"
       else
         redirect "/#{params[:base]}/#{params[:number]}"
+      end
+    end
+
+    get "/api" do
+      # Display the contents fo README.md in HTML
+      if File.exists?("./README.md")
+        @docs = RDiscount.new(File.read("./README.md")).to_html
+
+        erb :api
+      else
+        flash[:error] = "Sorry! The API documentation is not available at the moment."
+        redirect "/"
       end
     end
 
